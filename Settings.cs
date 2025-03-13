@@ -40,7 +40,8 @@ public partial class Settings : Window
 
 	public void _on_close_requested()
 	{
-		Visible = false;
+		//Visible = false;
+		_on_back_pressed();
 	}
 
 	internal void Init()
