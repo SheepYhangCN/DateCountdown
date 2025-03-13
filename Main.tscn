@@ -1,0 +1,240 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgtmn47igmlul"]
+
+[ext_resource type="FontFile" uid="uid://tvmqd5r7ary5" path="res://Fonts/NotoSans.otf" id="1_cm0pq"]
+[ext_resource type="Script" uid="uid://d3lvnrnburdmg" path="res://Main.cs" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://4ase5uy5ue8c" path="res://Settings.cs" id="2_uu6xs"]
+[ext_resource type="Theme" uid="uid://g8owbo1vva6t" path="res://24.tres" id="3_r0du0"]
+
+[sub_resource type="Theme" id="Theme_glv2v"]
+default_font = ExtResource("1_cm0pq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glv2v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uu6xs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cm0pq"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = SubResource("Theme_glv2v")
+script = ExtResource("1_glv2v")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_glv2v")
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(960, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 72
+text = "locUntilDays"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "locEditMode"
+horizontal_alignment = 1
+
+[node name="SettingsButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "locSettings"
+
+[node name="Settings" type="Window" parent="."]
+title = "locSettings"
+initial_position = 2
+size = Vector2i(720, 240)
+visible = false
+script = ExtResource("2_uu6xs")
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uu6xs")
+
+[node name="CenterContainer" type="CenterContainer" parent="Settings/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/PanelContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Settings/PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "locLanguage"
+
+[node name="OptionButton" type="OptionButton" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+selected = 0
+item_count = 3
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "中文（简体）"
+popup/item_1/id = 1
+popup/item_2/text = "中文（繁體）"
+popup/item_2/id = 2
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="Settings/PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "locTargetName"
+
+[node name="LineEdit" type="LineEdit" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Undefined"
+placeholder_text = "Undefined"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "locTargetDate"
+
+[node name="Year" type="SpinBox" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_r0du0")
+max_value = 9999.0
+value = 1919.0
+rounded = true
+alignment = 1
+update_on_text_changed = true
+
+[node name="Month" type="SpinBox" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_r0du0")
+min_value = 1.0
+max_value = 12.0
+value = 8.0
+rounded = true
+alignment = 1
+update_on_text_changed = true
+
+[node name="Day" type="SpinBox" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_r0du0")
+min_value = 1.0
+max_value = 31.0
+value = 10.0
+rounded = true
+alignment = 1
+update_on_text_changed = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Back" type="Button" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "locBack"
+
+[node name="Control2" type="Control" parent="Settings/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Github" type="Button" parent="Settings"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = " Github "
+
+[node name="CreditsButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_right = 157.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "locCredits"
+
+[node name="Credits" type="Window" parent="."]
+title = "locCredits"
+initial_position = 2
+size = Vector2i(960, 540)
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="Credits"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cm0pq")
+
+[node name="Label" type="Label" parent="Credits/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "locCreditsText"
+
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="close_requested" from="Settings" to="Settings" method="_on_close_requested"]
+[connection signal="pressed" from="Settings/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Back" to="Settings" method="_on_back_pressed"]
+[connection signal="pressed" from="Settings/Github" to="Settings" method="_on_github_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="close_requested" from="Credits" to="." method="_on_credits_close_requested"]
