@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>DateCountdown</RootNamespace>
-	<PublishAOT>true</PublishAOT>
+    <PublishAOT>true</PublishAOT>
   </PropertyGroup>
   <ItemGroup>
     <TrimmerRootAssembly Include="GodotSharp" />
