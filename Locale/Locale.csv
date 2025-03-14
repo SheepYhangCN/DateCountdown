@@ -9,4 +9,5 @@ locUntilDays,There are {DAY} day{dayS} left until {TARGET},距离 {TARGET} 还�
 locSettings,Settings,设置,設置
 locEditMode,Press Ctrl+F5 to toggle edit mode,按下 Ctrl+F5 来开关编辑模式,按下 Ctrl+F5 來開關編輯模式
 locCredits,Credits,鸣谢名单,鳴謝名單
+locAlwaysOnTop,Always on Top,始终置顶,始終置頂
 locCreditsText,"CREDITS\nMade By SheepYhangCN\n\nUSED THIHGS\nGodot Engine - Juan Linietsky, Ariel Manzur and contributors\n.NET SDK - Microsoft\nVisual Studio Code - Microsoft\nNoto Sans CJK - Google","「鸣谢名单」\n由 憨憨羊の宇航鸽鸽 制作\n\n「外部借物」\nGodot Engine - Juan Linietsky, Ariel Manzur 和贡献者们\n.NET SDK - Microsoft\nVisual Studio Code - Microsoft\nNoto Sans CJK - Google","「鳴謝名單」\n由 憨憨羊の宇航鴿鴿 製作\n\n「外部借物」\nGodot Engine - Juan Linietsky, Ariel Manzur 和貢獻者們\n.NET SDK - Microsoft\nVisual Studio Code - Microsoft\nNoto Sans CJK - Google"

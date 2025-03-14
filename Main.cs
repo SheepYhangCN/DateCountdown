@@ -31,16 +31,16 @@ public partial class Main : Control
 		{
 			GetNode<Button>("SettingsButton").Visible = true;
 			GetNode<Button>("CreditsButton").Visible = true;
+			GetNode<CheckButton>("CheckButton").Visible = true;
 		}
 	}
     public override void _Process(double delta)
     {
 		var day_left = (target_date - DateTime.Today).TotalDays;
 		var container = GetNode<VBoxContainer>("PanelContainer/CenterContainer/VBoxContainer");
-        var rect = container.GetViewportRect();
 		if (DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless))
 		{
-			DisplayServer.WindowSetMousePassthrough([rect.Position,rect.Position+(new Vector2(rect.Size.X,0)),rect.Position+rect.Size,rect.Position+(new Vector2(0,rect.Size.Y))]);
+			DisplayServer.WindowSetMousePassthrough([container.Position,container.Position+(new Vector2(container.Size.X,0)),container.Position+container.Size,container.Position+(new Vector2(0,container.Size.Y))]);
 		}
         GetNode<Label>("PanelContainer/CenterContainer/VBoxContainer/Label").Text = TranslationServer.Translate("locUntilDays").ToString().Replace("{TARGET}",target_name).Replace("{DAY}", day_left.ToString()).Replace("{dayS}", (day_left > 1 ? "s" : ""));
         if (Input.IsActionJustPressed("edit_mode"))
@@ -48,6 +48,7 @@ public partial class Main : Control
 			DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless,!DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless));
 			GetNode<Button>("SettingsButton").Visible = !DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless);
 			GetNode<Button>("CreditsButton").Visible = !DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless);
+			GetNode<CheckButton>("CheckButton").Visible = !DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless);
 			DisplayServer.WindowSetMousePassthrough([]);
         }
 		if ((!DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless)) || new Rect2(container.Position,container.Size).HasPoint(GetGlobalMousePosition()))
@@ -74,5 +75,15 @@ public partial class Main : Control
 	public void _on_credits_close_requested()
 	{
 		GetNode<Window>("Credits").Visible = false;
+	}
+
+	public void _on_github_pressed()
+	{
+		OS.ShellOpen("https://github.com/SheepYhangCN/DateCountdown");
+	}
+
+	public void _on_check_button_toggled(bool toggled)
+	{
+		GetWindow().AlwaysOnTop = toggled;
 	}
 }

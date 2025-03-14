@@ -33,11 +33,6 @@ public partial class Settings : Window
 		}
 	}
 
-	public void _on_github_pressed()
-	{
-		OS.ShellOpen("https://github.com/SheepYhangCN/DateCountdown");
-	}
-
 	public void _on_close_requested()
 	{
 		//Visible = false;
