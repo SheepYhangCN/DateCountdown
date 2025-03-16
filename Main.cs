@@ -37,12 +37,12 @@ public partial class Main : Control
     public override void _Process(double delta)
     {
 		var day_left = (target_date - DateTime.Today).TotalDays;
-		var container = GetNode<VBoxContainer>("PanelContainer/CenterContainer/VBoxContainer");
+		var container = GetNode<PanelContainer>("PanelContainer/CenterContainer/PanelContainer");
 		if (DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless))
 		{
 			DisplayServer.WindowSetMousePassthrough([container.Position,container.Position+(new Vector2(container.Size.X,0)),container.Position+container.Size,container.Position+(new Vector2(0,container.Size.Y))]);
 		}
-        GetNode<Label>("PanelContainer/CenterContainer/VBoxContainer/Label").Text = TranslationServer.Translate("locUntilDays").ToString().Replace("{TARGET}",target_name).Replace("{DAY}", day_left.ToString()).Replace("{dayS}", (day_left > 1 ? "s" : ""));
+        GetNode<Label>("PanelContainer/CenterContainer/PanelContainer/VBoxContainer/Label").Text = TranslationServer.Translate("locUntilDays").ToString().Replace("{TARGET}",target_name).Replace("{DAY}", day_left.ToString()).Replace("{dayS}", (day_left > 1 ? "s" : ""));
         if (Input.IsActionJustPressed("edit_mode"))
         {
 			DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless,!DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless));
@@ -53,11 +53,13 @@ public partial class Main : Control
         }
 		if ((!DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless)) || new Rect2(container.Position,container.Size).HasPoint(GetGlobalMousePosition()))
 		{
-			GetNode<Label>("PanelContainer/CenterContainer/VBoxContainer/Label2").Modulate = new Color(1,1,1,1);
+			GetNode<Label>("PanelContainer/CenterContainer/PanelContainer/VBoxContainer/Label2").Modulate = new Color(1,1,1,1);
+			GetNode<PanelContainer>("PanelContainer/CenterContainer/PanelContainer").SelfModulate = new Color(1,1,1,1);
 		}
 		else
 		{
-			GetNode<Label>("PanelContainer/CenterContainer/VBoxContainer/Label2").Modulate = new Color(1,1,1,0);
+			GetNode<Label>("PanelContainer/CenterContainer/PanelContainer/VBoxContainer/Label2").Modulate = new Color(1,1,1,0);
+			GetNode<PanelContainer>("PanelContainer/CenterContainer/PanelContainer").SelfModulate = new Color(1,1,1,0);
 		}
     }
 
