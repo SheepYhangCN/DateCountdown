@@ -26,6 +26,7 @@ public partial class Main : Control
 			TranslationServer.SetLocale(cfg.GetValue("Settings","Language","en").AsString());
 			target_name = cfg.GetValue("Settings","TargetName","Undefined").AsString();
 			target_date = new DateTime(cfg.GetValue("Settings","TargetDate",DateTime.MaxValue.Ticks).AsInt64());
+			GetWindow().AlwaysOnTop = cfg.GetValue("Settings","AlwaysOnTop",GetWindow().AlwaysOnTop).AsBool();
 		}
 		if (!DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless))
 		{
@@ -33,6 +34,7 @@ public partial class Main : Control
 			GetNode<Button>("CreditsButton").Visible = true;
 			GetNode<CheckButton>("CheckButton").Visible = true;
 		}
+		GetNode<CheckButton>("CheckButton").ButtonPressed = GetWindow().AlwaysOnTop;
 	}
     public override void _Process(double delta)
     {
@@ -87,5 +89,9 @@ public partial class Main : Control
 	public void _on_check_button_toggled(bool toggled)
 	{
 		GetWindow().AlwaysOnTop = toggled;
+		var cfg = new ConfigFile();
+		cfg.Load("user://Settings.ini");
+		cfg.SetValue("Settings","AlwaysOnTop",toggled);
+		cfg.Save("user://Settings.ini");
 	}
 }
