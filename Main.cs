@@ -4,7 +4,7 @@ using System;
 public partial class Main : Control
 {
     [Export] internal string target_name = "Undefined";
-    internal DateTime target_date = new DateTime(DateTime.MaxValue.Ticks);
+    internal DateTime target_date = DateTime.MaxValue;
 	public override void _Ready()
 	{
 		if (OS.GetLocale() == "zh_TW" || OS.GetLocale() == "zh_HK" || OS.GetLocale() == "zh_MO")
